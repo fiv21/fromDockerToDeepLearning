@@ -1,4 +1,4 @@
-FROM python:3.6-slim-stretch
+FROM python:3.7.3-slim-stretch
 
 LABEL maintainer="Franco I. Vargas <vargasfrancoivan@gmail.com>" \
       name="from Docker to Deep Learning" \
@@ -51,8 +51,8 @@ ENV BUILD_PACKAGES="\
 RUN set -ex; \
     apt-get update -y; \
     apt-get upgrade -y; \
-    apt-get install -y --no-install-recommends ${APT_PACKAGES}; \
-    apt-get install -y --no-install-recommends ${BUILD_PACKAGES}; \
+    apt-get install -y ${APT_PACKAGES}; \
+    apt-get install -y ${BUILD_PACKAGES}; \
     pip install -U -v setuptools wheel; \
     pip install -U -v ${PIP_PACKAGES}; \
     apt-get remove --purge --auto-remove -y ${BUILD_PACKAGES}; \
